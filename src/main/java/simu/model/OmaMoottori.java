@@ -38,17 +38,17 @@ public class OmaMoottori extends Moottori{
 		palvelupisteet[3]=new CheckIN(new Normal(10,6), tapahtumalista, TapahtumanTyyppi.CI4, 387, 481);
 		palvelupisteet[4]=new CheckIN(new Normal(10,6), tapahtumalista, TapahtumanTyyppi.CI5, 387 , 481);
 
-		palvelupisteet[5]=new SecurityCheck(new Normal(10,6), tapahtumalista, TapahtumanTyyppi.SEC1, 312, 402);
-		palvelupisteet[6]=new SecurityCheck(new Normal(10,6), tapahtumalista, TapahtumanTyyppi.SEC2, 255, 429);
-		palvelupisteet[7]=new SecurityCheck(new Normal(10,6), tapahtumalista, TapahtumanTyyppi.SEC3, 316, 436);
-		palvelupisteet[8]=new SecurityCheck(new Normal(10,6), tapahtumalista, TapahtumanTyyppi.SEC4, 261, 462);
-		palvelupisteet[9]=new SecurityCheck(new Normal(10,6), tapahtumalista, TapahtumanTyyppi.SEC5, 197, 463);
+		palvelupisteet[5]=new SecurityCheck(new Normal(10,6), tapahtumalista, TapahtumanTyyppi.SEC1, 321, 392);
+		palvelupisteet[6]=new SecurityCheck(new Normal(10,6), tapahtumalista, TapahtumanTyyppi.SEC2, 265, 423);
+		palvelupisteet[7]=new SecurityCheck(new Normal(10,6), tapahtumalista, TapahtumanTyyppi.SEC3, 328, 430);
+		palvelupisteet[8]=new SecurityCheck(new Normal(10,6), tapahtumalista, TapahtumanTyyppi.SEC4, 270, 457);
+		palvelupisteet[9]=new SecurityCheck(new Normal(10,6), tapahtumalista, TapahtumanTyyppi.SEC5, 208, 454);
 
-		palvelupisteet[10]=new PassportControl(new Normal(10,6), tapahtumalista, TapahtumanTyyppi.PAS1, 271, 368);
-		palvelupisteet[11]=new PassportControl(new Normal(10,6), tapahtumalista, TapahtumanTyyppi.PAS2, 237, 385);
-		palvelupisteet[12]=new PassportControl(new Normal(10,6), tapahtumalista, TapahtumanTyyppi.PAS3, 207, 397);
-		palvelupisteet[13]=new PassportControl(new Normal(10,6), tapahtumalista, TapahtumanTyyppi.PAS4, 174, 414);
-		palvelupisteet[14]=new PassportControl(new Normal(10,6), tapahtumalista, TapahtumanTyyppi.PAS5, 137, 430);
+		palvelupisteet[10]=new PassportControl(new Normal(10,6), tapahtumalista, TapahtumanTyyppi.PAS1, 263, 360);
+		palvelupisteet[11]=new PassportControl(new Normal(10,6), tapahtumalista, TapahtumanTyyppi.PAS2, 234, 373);
+		palvelupisteet[12]=new PassportControl(new Normal(10,6), tapahtumalista, TapahtumanTyyppi.PAS3, 201, 389);
+		palvelupisteet[13]=new PassportControl(new Normal(10,6), tapahtumalista, TapahtumanTyyppi.PAS4, 166, 404);
+		palvelupisteet[14]=new PassportControl(new Normal(10,6), tapahtumalista, TapahtumanTyyppi.PAS5, 134, 422);
 
 		palvelupisteet[15]=new DutyFree(new Normal(10,6), tapahtumalista, TapahtumanTyyppi.DUT1, 321, 250);
 

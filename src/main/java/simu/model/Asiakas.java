@@ -8,6 +8,8 @@ import simu.framework.Trace;
 import view.Kontrolleri;
 import view.Visualisointi;
 
+import java.util.Random;
+
 
 // TODO:
 // Asiakas koodataan simulointimallin edellyttämällä tavalla (data!)
@@ -23,12 +25,14 @@ public class Asiakas {
 	private static long sum = 0;
 	public boolean passport = true;
 
-	public boolean international = true;
+	public boolean international;
 
 	public Asiakas() {
 		id = i++;
 		saapumisaika = Kello.getInstance().getAika();
 		Trace.out(Trace.Level.INFO, "Uusi asiakas:" + id + ":" + saapumisaika);
+		Random r = new Random();
+		international = r.nextBoolean();
 	}
 
 	public boolean isPassport() {
@@ -73,11 +77,21 @@ public class Asiakas {
 	}
 
 	public void draw(GraphicsContext gc, int x, int y) {
-		gc.setFill(Color.GREEN);
+		if (international) {
+			gc.setFill(Color.GREEN);
+		} else {
+			gc.setFill(Color.RED);
+		}
 		gc.fillOval(x, y, 10, 10);
 
 		gc.setFill(Color.BLACK);
 		gc.fillText(String.valueOf(id), x + 2, y + 6);
 
+	}
+
+	public void removeDraw(GraphicsContext gc, int x, int y) {
+		gc.setFill(Color.TRANSPARENT);
+		gc.fillOval(x, y, 1, 1);
+		gc.setFill(Color.TRANSPARENT);
 	}
 }

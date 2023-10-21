@@ -40,8 +40,9 @@ public class Visualisointi implements IVisualisointi{
 		for (Palvelupiste p : kontrolleri.getPalvelupisteet()) {
 			for (Asiakas asiakas : p.getJononAsiakkaat()) {
 				asiakas.draw(gc, p.getX() + x, p.getY() + y);
-				x+= 5;
-				y+= 5;
+				x+= 8;
+				y+= 3;
+				asiakas.removeDraw(gc, p.getX() + x, p.getY() + y);
 			}
 		}
 	}

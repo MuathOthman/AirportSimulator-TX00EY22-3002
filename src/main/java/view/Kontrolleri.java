@@ -2,6 +2,7 @@ package view;
 
 import controller.IKontrolleriForM;
 import controller.IKontrolleriForV;
+import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -12,15 +13,24 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import javafx.util.Duration;
 import simu.framework.IMoottori;
 import simu.framework.Kello;
 import simu.framework.Trace;
+import simu.model.Asiakas;
 import simu.model.OmaMoottori;
+import simu.model.Palvelupiste;
+import java.awt.*;
+import javafx.scene.canvas.Canvas;
 
-public class Kontrolleri implements IKontrolleriForM {
+
+public class Kontrolleri implements IKontrolleriForM, IKontrolleriForV {
     private Visualisointi visualisointi;
+
+    private Asiakas asiakas;
     private IMoottori moottori;
     private ISimulaattorinUI ui;
     private IKontrolleriForV kontrolleri;
@@ -107,39 +117,43 @@ public class Kontrolleri implements IKontrolleriForM {
     ImageView control5;
     @FXML
     MenuItem startButton;
+    @FXML
+    Canvas canvasy;
 
 
-    int dutyTimes = 0;
-    int securityTimes = 0;
-    int checkinTimes = 0;
-    int passportTimes = 0;
+    int dutyTimes = 1;
+    int securityTimes = 5;
+    int checkinTimes = 4;
+    int passportTimes = 5;
 
 
     @FXML
     public synchronized void buttonMinusSecurity() {
         buttonMinusSecurity.setOnAction(e -> {
-            if (securityTimes == 0) {
+            if (securityTimes == 1) {
                 security1.setVisible(false);
                 System.out.println("Check-IN minus button pressed" + securityTimes);
-            } else if (securityTimes == 1) {
+                securityTimes = 1;
+            } else if (securityTimes == 2) {
                 security2.setVisible(false);
                 System.out.println("Check-IN minus button pressed" + securityTimes);
-            } else if (securityTimes == 2) {
+                securityTimes = 2;
+            } else if (securityTimes == 3) {
                 security3.setVisible(false);
                 System.out.println("Check-IN minus button pressed" + securityTimes);
-            } else if (securityTimes == 3) {
+                securityTimes = 3;
+            } else if (securityTimes == 4) {
                 security4.setVisible(false);
                 System.out.println("Check-IN minus button pressed" + securityTimes);
-            } else if (securityTimes == 4) {
+                securityTimes = 4;
+            } else if (securityTimes == 5) {
                 security5.setVisible(false);
                 System.out.println("Check-IN minus button pressed" + securityTimes);
-            } else if (securityTimes == 5) {
-                security6.setVisible(false);
-                System.out.println("Check-IN minus button pressed" + securityTimes);
-            } else if (securityTimes > 5) {
                 securityTimes = 5;
             }
-            securityTimes++;
+            if (securityTimes > 0) {
+                securityTimes--;
+            }
         });
     }
 
@@ -147,29 +161,32 @@ public class Kontrolleri implements IKontrolleriForM {
     public synchronized void buttonPlusSecurity() {
         buttonPlusSecurity.setOnAction(e -> {
             if (securityTimes == 5) {
-                security6.setVisible(true);
-                System.out.println("Check-IN plus button pressed" + securityTimes);
-            } else if (securityTimes == 4) {
                 security5.setVisible(true);
                 System.out.println("Check-IN plus button pressed" + securityTimes);
-            } else if (securityTimes == 3) {
+                securityTimes = 5;
+            } else if (securityTimes == 4) {
                 security4.setVisible(true);
                 System.out.println("Check-IN plus button pressed" + securityTimes);
-            } else if (securityTimes == 2) {
+                securityTimes = 4;
+            } else if (securityTimes == 3) {
                 security3.setVisible(true);
                 System.out.println("Check-IN plus button pressed" + securityTimes);
-            } else if (securityTimes == 1) {
+                securityTimes = 3;
+            } else if (securityTimes == 2) {
                 security2.setVisible(true);
                 System.out.println("Check-IN plus button pressed" + securityTimes);
-            } else if (securityTimes == 0) {
+                securityTimes = 2;
+            } else if (securityTimes == 1) {
                 security1.setVisible(true);
                 System.out.println("Check-IN plus button pressed" + securityTimes);
-            } else if (securityTimes < 0) {
-                securityTimes = 0;
+                securityTimes = 1;
             }
-            securityTimes--;
+            if (securityTimes < 5) {
+                securityTimes++;
+            }
         });
     }
+
 
     @FXML
     public synchronized void buttonMinusDuty() {
@@ -212,78 +229,92 @@ public class Kontrolleri implements IKontrolleriForM {
     @FXML
     public synchronized void ButtonMinusCheckIn() {
         buttonMinus.setOnAction(e -> {
-            if (checkinTimes == 0) {
+            if (checkinTimes == 1) {
                 counter4.setVisible(false);
-            } else if (checkinTimes == 1) {
-                counter3.setVisible(false);
+                checkinTimes = 1;
             } else if (checkinTimes == 2) {
-                counter2.setVisible(false);
+                counter3.setVisible(false);
+                checkinTimes = 2;
             } else if (checkinTimes == 3) {
+                counter2.setVisible(false);
+                checkinTimes = 3;
+            } else if (checkinTimes == 4) {
                 counter1.setVisible(false);
-                System.out.println("Check-IN minus button pressed" + checkinTimes);
-            } else if (checkinTimes > 4) {
                 checkinTimes = 4;
+                System.out.println("Check-IN minus button pressed" + checkinTimes);
+            } if (checkinTimes > 0) {
+                checkinTimes--;
             }
-            checkinTimes++;
         });
     }
 
     @FXML
     public synchronized void ButtonPlusCheckIn() {
         buttonPlus.setOnAction(e -> {
-            if (checkinTimes == 0) {
+            if (checkinTimes == 1) {
                 counter4.setVisible(true);
-            } else if (checkinTimes == 1) {
-                counter3.setVisible(true);
+                checkinTimes = 1;
             } else if (checkinTimes == 2) {
-                counter2.setVisible(true);
+                counter3.setVisible(true);
+                checkinTimes = 2;
             } else if (checkinTimes == 3) {
+                counter2.setVisible(true);
+                checkinTimes = 3;
+            } else if (checkinTimes == 4) {
                 counter1.setVisible(true);
+                checkinTimes = 4;
                 System.out.println("Check-IN plus button pressed" + checkinTimes);
-            } else if (passportTimes < 0) {
-                checkinTimes = 0;
+            } if (securityTimes < 5) {
+                securityTimes++;
             }
-            checkinTimes--;
         });
     }
 
     @FXML
     public synchronized void ButtonMinusPassport() {
         buttonMinusPassport.setOnAction(e -> {
-            if (passportTimes == 0) {
+            if (passportTimes == 1) {
                 control5.setVisible(false);
-            } else if (passportTimes == 1) {
-                control4.setVisible(false);
+                passportTimes = 1;
             } else if (passportTimes == 2) {
-                control3.setVisible(false);
+                control4.setVisible(false);
+                passportTimes = 2;
             } else if (passportTimes == 3) {
-                control2.setVisible(false);
+                control3.setVisible(false);
+                passportTimes = 3;
             } else if (passportTimes == 4) {
-                control1.setVisible(false);
-            } else if (passportTimes > 4) {
+                control2.setVisible(false);
                 passportTimes = 4;
+            } else if (passportTimes == 5) {
+                control1.setVisible(false);
+                passportTimes = 5;
+            } if (passportTimes > 0) {
+                passportTimes--;
             }
-            passportTimes++;
         });
     }
 
     @FXML
     public synchronized void ButtonPlusPassport() {
         buttonPlusPassport.setOnAction(e -> {
-            if (passportTimes == 0) {
+            if (passportTimes == 1) {
                 control5.setVisible(true);
-            } else if (passportTimes == 1) {
-                control4.setVisible(true);
+                passportTimes = 1;
             } else if (passportTimes == 2) {
-                control3.setVisible(true);
+                control4.setVisible(true);
+                passportTimes = 2;
             } else if (passportTimes == 3) {
-                control2.setVisible(true);
+                control3.setVisible(true);
+                passportTimes = 3;
             } else if (passportTimes == 4) {
+                control2.setVisible(true);
+                passportTimes = 4;
+            } else if (passportTimes == 5) {
                 control1.setVisible(true);
-            } else if (passportTimes < 0) {
-                passportTimes = 0;
+                passportTimes = 5;
+            } if (passportTimes < 5) {
+                passportTimes++;
             }
-            passportTimes--;
         });
     }
 
@@ -292,18 +323,17 @@ public class Kontrolleri implements IKontrolleriForM {
         buttonHidasta.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                kontrolleri.hidasta();
+                hidasta();
             }
         });
 
     }
-
     @FXML
     public void buttonNopeuta() {
         buttonNopeuta.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                kontrolleri.nopeuta();
+                nopeuta();
             }
         });
     }
@@ -314,13 +344,37 @@ public class Kontrolleri implements IKontrolleriForM {
         Kello.getInstance().setAika(0);
         // Luodaan uusi moottori ja asetetaan sille asetukset
         //moottori = new OmaMoottori(this);
+        visualisointi = new Visualisointi(this, canvasy);
         moottori = new OmaMoottori(this);
         moottori.setSimulointiaika(Integer.parseInt(textFieldAika.getText()));
         moottori.setViive(Integer.parseInt(textFieldViive.getText()));
-        //Stage simulaationStage = (Stage) simulaatioSivu.getScene().getWindow();
+        moottori.setSettings(new int[]{checkinTimes, securityTimes, passportTimes});
+        System.out.println(moottori.getSettings()[0]);
+        System.out.println(moottori.getSettings()[1]);
+        System.out.println(moottori.getSettings()[2]);
         ((Thread) moottori).start();
         Trace.setTraceLevel(Trace.Level.INFO);
-        //visualisointi.aloitaVisualisointi();
+        // Luodaan uusi asikakkaita GUI:iin
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public synchronized void run() {
+                while (true) {
+                    System.out.println("Visualisoi asiakas --- IAM HERE");
+                    visualisointi.uusiAsiakas();
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
+        thread.start();
+
+    }
+
+    public Palvelupiste[] getPalvelupisteet() {
+        return ((OmaMoottori) moottori).getPalvelupisteet();
     }
 
 
@@ -330,7 +384,27 @@ public class Kontrolleri implements IKontrolleriForM {
     }
 
     @Override
-    public void visualisoiAsiakas() {
+    public synchronized void visualisoiAsiakas() {
+        System.out.println("Visualisoi asiakas");
+        Platform.runLater(new Runnable(){
+            public void run(){
+                ui.getVisualisointi().uusiAsiakas();
+            }
+        });
+    }
 
+    @Override
+    public void kaynnistaSimulointi() {
+
+    }
+
+    @Override
+    public void nopeuta() {
+        moottori.setViive((long) (moottori.getViive() * 0.9));
+    }
+
+    @Override
+    public void hidasta() {
+        moottori.setViive((long) (moottori.getViive() * 1.10));
     }
 }

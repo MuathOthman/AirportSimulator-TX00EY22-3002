@@ -69,7 +69,7 @@
                         <MenuItem mnemonicParsing="false" text="Close" />
                         <MenuItem mnemonicParsing="false" text="Save" />
                         <MenuItem mnemonicParsing="false" text="Save As…" />
-                        <MenuItem fx:id="startButton" mnemonicParsing="false" text="Start"  onAction="#aloita"/>
+                        <MenuItem fx:id="startButton" mnemonicParsing="false" onAction="#aloita" text="Start" />
                         <SeparatorMenuItem mnemonicParsing="false" />
                         <MenuItem mnemonicParsing="false" text="Preferences…" />
                         <SeparatorMenuItem mnemonicParsing="false" />
@@ -205,7 +205,6 @@
                      <children>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0">
                            <children>
-                              <Canvas height="200.0" width="200.0" />
                               <ImageView fx:id="counter30" fitHeight="34.0" fitWidth="12.0" layoutX="365.0" layoutY="447.0">
                                  <image>
                                     <Image url="@airport/Asset7.png" />
@@ -321,6 +320,7 @@
                                     <Image url="@dutyfree1.png" />
                                  </image>
                               </ImageView>
+                              <Canvas fx:id="canvasy" height="545.0" width="633.0" />
                            </children>
                         </AnchorPane>
                      </children>

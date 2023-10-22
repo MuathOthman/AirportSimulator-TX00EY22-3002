@@ -4,11 +4,13 @@ import dao.AsiakasDao;
 import dao.SimuDao;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 
 public class KontrolleriResul {
 
@@ -31,6 +33,15 @@ public class KontrolleriResul {
     private MenuItem PassportSelection;
 
     @FXML
+    private Text Q1;
+
+    @FXML
+    private Text Q2;
+
+    @FXML
+    private Text Q3;
+
+    @FXML
     private ScrollPane ScrollPane;
 
     @FXML
@@ -38,6 +49,24 @@ public class KontrolleriResul {
 
     @FXML
     private SplitPane SplitPane;
+
+    @FXML
+    private Text T1;
+
+    @FXML
+    private Text T2;
+
+    @FXML
+    private Text T3;
+
+    @FXML
+    private Text U1;
+
+    @FXML
+    private Text U2;
+
+    @FXML
+    private Text U3;
 
     @FXML
     private VBox VBox;
@@ -72,6 +101,7 @@ public class KontrolleriResul {
     @FXML
     private Font x1;
 
+
     @FXML
     private void initialize() {
         AsiakasDao dao = new AsiakasDao();
@@ -87,7 +117,9 @@ public class KontrolleriResul {
         int id = simuDao.getNames().indexOf(selection.getSelectionModel().getSelectedItem()) + 1;
         dataCustomers.setText(String.valueOf(simuDao.find(id).getCustomers()));
         dataSimulationTime.setText(String.valueOf(simuDao.find(id).getTime()));
-
+        Q1.setText(String.valueOf(simuDao.find(id).getCheckin()));
+        Q2.setText(String.valueOf(simuDao.find(id).getSec()));
+        Q3.setText(String.valueOf(simuDao.find(id).getPass()));
     }
 
 }

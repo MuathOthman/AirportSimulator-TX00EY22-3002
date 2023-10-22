@@ -14,4 +14,5 @@ public interface IMoottori { // UUSI
 
 	int[] getSettings();
 
+	int getSimulointiaika();
 }

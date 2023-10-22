@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 @Entity
 @Table(name="simulaatio")
 public class simulaatio {
+    private static int idCounter = 0;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,7 +45,7 @@ public class simulaatio {
         this.av_time = 0;
         this.time = 0;
         this.customers = 0;
-        this.name = "Simulaatio" + id;
+        this.name = "Simulaatio" + getId();
     }
 
     public simulaatio() {

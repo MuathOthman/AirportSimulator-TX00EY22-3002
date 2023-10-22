@@ -77,7 +77,13 @@ public class KontrolleriResul {
         AsiakasDao dao = new AsiakasDao();
         SimuDao simuDao = new SimuDao();
         selection.getItems().addAll(simuDao.getNames());
-        selection.getSelectionModel().selectFirst();
+        //selection.getSelectionModel().selectFirst();
+    }
+
+    @FXML
+    public void selector(){
+        AsiakasDao dao = new AsiakasDao();
+        SimuDao simuDao = new SimuDao();
         int id = simuDao.getNames().indexOf(selection.getSelectionModel().getSelectedItem()) + 1;
         dataCustomers.setText(String.valueOf(simuDao.find(id).getCustomers()));
         dataSimulationTime.setText(String.valueOf(simuDao.find(id).getTime()));

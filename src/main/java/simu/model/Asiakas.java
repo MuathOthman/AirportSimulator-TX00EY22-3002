@@ -84,8 +84,6 @@ public class Asiakas {
 		}
 		gc.fillOval(x, y, 10, 10);
 
-		gc.setFill(Color.BLACK);
-		gc.fillText(String.valueOf(id), x + 2, y + 6);
 
 	}
 

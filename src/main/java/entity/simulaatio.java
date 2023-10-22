@@ -45,7 +45,7 @@ public class simulaatio {
         this.av_time = 0;
         this.time = 0;
         this.customers = 0;
-        this.name = "Simulaatio" + getId();
+        this.name = "Simulaatio" + id;
     }
 
     public simulaatio() {

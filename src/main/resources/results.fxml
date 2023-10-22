@@ -140,6 +140,16 @@
                                           <Label fx:id="dataSimulationTime" prefHeight="36.0" prefWidth="116.0" text="DATA" />
                                        </children>
                                     </HBox>
+                                    <HBox prefHeight="43.0" prefWidth="264.0">
+                                       <children>
+                                          <Label prefHeight="36.0" prefWidth="141.0" text="Average simulation time: ">
+                                             <HBox.margin>
+                                                <Insets left="20.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <Label fx:id="AvaregeSimulationTime" prefHeight="36.0" prefWidth="92.0" text="DATA" />
+                                       </children>
+                                    </HBox>
                                  </children>
                               </VBox>
                            </children>

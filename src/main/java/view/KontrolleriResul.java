@@ -90,6 +90,9 @@ public class KontrolleriResul {
     private Label dataSimulationTime;
 
     @FXML
+    private Label AvaregeSimulationTime;
+
+    @FXML
     private ComboBox<String> selection;
 
     @FXML
@@ -117,6 +120,7 @@ public class KontrolleriResul {
         int id = simuDao.getNames().indexOf(selection.getSelectionModel().getSelectedItem()) + 1;
         dataCustomers.setText(String.valueOf(simuDao.find(id).getCustomers()));
         dataSimulationTime.setText(String.valueOf(simuDao.find(id).getTime()));
+        AvaregeSimulationTime.setText(String.valueOf(simuDao.find(id).getAv_time()));
         Q1.setText(String.valueOf(simuDao.find(id).getCheckin()));
         Q2.setText(String.valueOf(simuDao.find(id).getSec()));
         Q3.setText(String.valueOf(simuDao.find(id).getPass()));

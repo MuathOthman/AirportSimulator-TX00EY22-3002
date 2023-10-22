@@ -15,6 +15,8 @@ import simu.model.CheckIN;
 import simu.model.DutyFree;
 import simu.model.PassportControl;
 import simu.model.SecurityCheck;
+import dao.*;
+import datasource.*;
 
 
 public class OmaMoottori extends Moottori{

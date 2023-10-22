@@ -3,21 +3,12 @@ package simu.model;
 import controller.IKontrolleriForM;
 import eduni.distributions.Negexp;
 import eduni.distributions.Normal;
-import entity.SimuE;
-import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.paint.Color;
-import simu.model.Domestic;
-import simu.model.International;
+import entity.simulaatio;
 import simu.framework.Kello;
 import simu.framework.Moottori;
 import simu.framework.Saapumisprosessi;
 import simu.framework.Tapahtuma;
-import simu.model.CheckIN;
-import simu.model.DutyFree;
-import simu.model.PassportControl;
-import simu.model.SecurityCheck;
 import dao.*;
-import datasource.*;
 import entity.*;
 
 
@@ -27,7 +18,7 @@ public class OmaMoottori extends Moottori{
 
 	private SimuDao SimuDao;
 
-	private SimuE SimuE;
+	private simulaatio simulaatio;
 
 	private AsiakasDao AsiakasDao;
 
@@ -84,8 +75,8 @@ public class OmaMoottori extends Moottori{
 	protected void alustukset() {
 		saapumisprosessi.generoiSeuraava(); // Ensimmäinen saapuminen järjestelmään
 		SimuDao = new SimuDao();
-		SimuE = new SimuE(settings, "22102023");
-		SimuDao.persist(SimuE);
+		simulaatio = new simulaatio(settings, "22102023");
+		SimuDao.persist(simulaatio);
 		AsiakasDao = new AsiakasDao();
 	}
 
@@ -324,16 +315,18 @@ public class OmaMoottori extends Moottori{
 			case DEP1:
 				a = (Asiakas) palvelupisteet[17].otaJonosta(); //asiakas poistetaan järjestelmästä
 				a.setPoistumisaika(Kello.getInstance().getAika());
-				e = new AsiakasE(a, this.SimuE.getId());
+				e = new AsiakasE(a, this.simulaatio.getId());
 				AsiakasDao.persist(e);
 				a.raportti();
 			case DEP2:
 				a = (Asiakas) palvelupisteet[16].otaJonosta(); //asiakas poistetaan järjestelmästä
 				a.setPoistumisaika(Kello.getInstance().getAika());
-				e = new AsiakasE(a, this.SimuE.getId());
+				e = new AsiakasE(a, this.simulaatio.getId());
 				AsiakasDao.persist(e);
-				SimuE.setAv_time(a.raportti());
-				SimuDao.update(SimuE);
+				simulaatio.setAv_time(a.raportti());
+				simulaatio.setCustomers(Asiakas.getCount());
+				simulaatio.setTime(Kello.getInstance().getAika());
+				SimuDao.update(simulaatio);
 				a.raportti();
 
 		}

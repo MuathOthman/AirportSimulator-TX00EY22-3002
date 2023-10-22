@@ -31,4 +31,6 @@ public class AsiakasDao {
         em.remove(emp);
         em.getTransaction().commit();
     }
+
+
 }

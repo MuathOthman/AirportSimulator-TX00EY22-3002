@@ -1,11 +1,10 @@
 package entity;
 
 import jakarta.persistence.*;
-import simu.model.*;
 
 @Entity
 @Table(name="simulaatio")
-public class SimuE {
+public class simulaatio {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,16 +25,29 @@ public class SimuE {
     @Column(name = "sec")
     private int sec;
 
-    public SimuE(int[] settings, String date) {
+    @Column(name = "time")
+    private double time;
+
+    @Column(name = "customers")
+    private int customers;
+
+    @Column(name = "name")
+    private String name;
+
+
+    public simulaatio(int[] settings, String date) {
         super();
         this.checkin = settings[0];
         this.sec = settings[1];
         this.pass = settings[2];
         this.date = date;
-
+        this.av_time = 0;
+        this.time = 0;
+        this.customers = 0;
+        this.name = "Simulaatio" + id;
     }
 
-    public SimuE() {
+    public simulaatio() {
 
     }
 
@@ -86,4 +98,29 @@ public class SimuE {
     public void setSec(int sec) {
         this.sec = sec;
     }
+
+    public double getTime() {
+        return time;
+    }
+
+    public void setTime(double time) {
+        this.time = time;
+    }
+
+    public int getCustomers() {
+        return customers;
+    }
+
+    public void setCustomers(int customers) {
+        this.customers = customers;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
 }

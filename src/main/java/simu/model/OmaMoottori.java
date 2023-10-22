@@ -11,6 +11,11 @@ import simu.framework.Tapahtuma;
 import dao.*;
 import entity.*;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 
 public class OmaMoottori extends Moottori{
 
@@ -75,7 +80,10 @@ public class OmaMoottori extends Moottori{
 	protected void alustukset() {
 		saapumisprosessi.generoiSeuraava(); // Ensimmäinen saapuminen järjestelmään
 		SimuDao = new SimuDao();
-		simulaatio = new simulaatio(settings, "22102023");
+		Date date = Calendar.getInstance().getTime();
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+		String strDate = dateFormat.format(date);
+		simulaatio = new simulaatio(settings, strDate);
 		SimuDao.persist(simulaatio);
 		AsiakasDao = new AsiakasDao();
 	}

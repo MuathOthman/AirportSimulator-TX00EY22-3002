@@ -2,6 +2,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import simu.framework.IMoottori;
+import simu.framework.Tapahtuma;
+import simu.test.MoottoriForTest;
 
 public class MainTest {
 
@@ -9,7 +11,33 @@ public class MainTest {
 
     @BeforeEach
     public void setUp() {
-        moottori = new MoottoriForTest();
+
+        moottori = new MoottoriForTest() {
+            @Override
+            protected void suoritaTapahtuma(Tapahtuma t) {
+
+            }
+
+            @Override
+            protected void yritaCTapahtumat() {
+
+            }
+
+            @Override
+            protected void alustukset() {
+
+            }
+
+            @Override
+            public void setSettings(int[] ints) {
+
+            }
+
+            @Override
+            public int[] getSettings() {
+                return new int[0];
+            }
+        };
     }
 
     @Test

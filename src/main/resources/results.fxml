@@ -51,6 +51,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.control.ComboBox?>
 <VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.KontrolleriResul">
     <children>
         <MenuBar fx:id="MenuBar" VBox.vgrow="NEVER">
@@ -98,7 +99,7 @@
                                 </Label>
                         <AnchorPane prefHeight="473.0" prefWidth="254.0">
                            <children>
-                              <ChoiceBox fx:id="selection" layoutX="24.0" layoutY="2.0" prefHeight="26.0" prefWidth="213.0" />
+                              <ComboBox fx:id="selection" layoutX="24.0" layoutY="2.0" prefHeight="26.0" prefWidth="213.0" />
                               <VBox layoutY="50.0" prefHeight="361.0" prefWidth="267.0">
                                  <children>
                                     <HBox prefHeight="43.0" prefWidth="264.0">

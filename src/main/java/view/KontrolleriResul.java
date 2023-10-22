@@ -1,13 +1,9 @@
 package view;
 
+import dao.AsiakasDao;
+import dao.SimuDao;
 import javafx.fxml.FXML;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.SplitPane;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
@@ -65,7 +61,7 @@ public class KontrolleriResul {
     private Label dataSimulationTime;
 
     @FXML
-    private ChoiceBox<?> selection;
+    private ComboBox<String> selection;
 
     @FXML
     private StackPane stackPane;
@@ -75,5 +71,17 @@ public class KontrolleriResul {
 
     @FXML
     private Font x1;
+
+    @FXML
+    private void initialize() {
+        AsiakasDao dao = new AsiakasDao();
+        SimuDao simuDao = new SimuDao();
+        selection.getItems().addAll(simuDao.getNames());
+        selection.getSelectionModel().selectFirst();
+        int id = simuDao.getNames().indexOf(selection.getSelectionModel().getSelectedItem()) + 1;
+        dataCustomers.setText(String.valueOf(simuDao.find(id).getCustomers()));
+        dataSimulationTime.setText(String.valueOf(simuDao.find(id).getTime()));
+
+    }
 
 }

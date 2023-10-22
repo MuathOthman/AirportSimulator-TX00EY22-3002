@@ -72,6 +72,8 @@ public class AsiakasE {
     public void setLeft_time(double left_time) {
         this.left_time = left_time;
     }
+
+
 }
 
 

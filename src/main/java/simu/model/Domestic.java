@@ -10,6 +10,6 @@ public class Domestic extends CheckIN {
 
     @Override
     public void aloitaPalvelu() {
-
+        super.aloitaPalvelu();
     }
 }

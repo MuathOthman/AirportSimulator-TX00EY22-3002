@@ -41,7 +41,6 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -62,30 +61,8 @@
             <menus>
                 <Menu mnemonicParsing="false" text="File">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="New" />
-                        <MenuItem mnemonicParsing="false" text="Open…" />
-                        <SeparatorMenuItem mnemonicParsing="false" />
-                        <MenuItem mnemonicParsing="false" text="Close" />
-                        <MenuItem mnemonicParsing="false" text="Save" />
-                        <MenuItem mnemonicParsing="false" text="Save As…" />
                         <MenuItem fx:id="startButton" mnemonicParsing="false" onAction="#aloita" text="Start" />
-                        <SeparatorMenuItem mnemonicParsing="false" />
-                        <MenuItem mnemonicParsing="false" text="Preferences…" />
-                        <SeparatorMenuItem mnemonicParsing="false" />
-                        <MenuItem mnemonicParsing="false" text="Quit" />
-                    </items>
-                </Menu>
-                <Menu fx:id="ViewSelection" mnemonicParsing="false" text="View">
-                    <items>
-                  <MenuItem fx:id="CheckINSelection" mnemonicParsing="false" text="Check-IN" />
-                  <MenuItem fx:id="SecuritySelection" mnemonicParsing="false" text="Security Department" />
-                  <MenuItem fx:id="PassportSelection" mnemonicParsing="false" text="Passport Control" />
-                  <MenuItem fx:id="DutySelection" mnemonicParsing="false" text="Duty Free" />
-                    </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Help">
-                    <items>
-                        <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
+                        <MenuItem fx:id="results" mnemonicParsing="false" text="Results" onAction="#results"/>
                     </items>
                 </Menu>
             </menus>
@@ -167,17 +144,17 @@
                                         <Button fx:id="buttonMinusSecurity" mnemonicParsing="false" onAction="#buttonMinusSecurity" text="-" />
                                     </children>
                                 </HBox>
-                        <HBox fx:id="HBoxPassport1" prefHeight="34.0" prefWidth="0.0">
-                           <children>
-                              <Text fx:id="textPassport1" strokeType="OUTSIDE" strokeWidth="0.0" text="Passport control" textAlignment="CENTER" wrappingWidth="163.29811143875122">
-                                 <font>
-                                    <Font name="Apple Braille" size="16.0" />
-                                 </font>
-                              </Text>
-                              <Button fx:id="buttonPlusPassport" mnemonicParsing="false" onAction="#ButtonPlusPassport" text="+" />
-                              <Button fx:id="buttonMinusPassport" mnemonicParsing="false" onAction="#ButtonMinusPassport" text="-" />
-                           </children>
-                        </HBox>
+                                <HBox fx:id="HBoxPassport1" prefHeight="34.0" prefWidth="0.0">
+                                    <children>
+                                        <Text fx:id="textPassport1" strokeType="OUTSIDE" strokeWidth="0.0" text="Passport control" textAlignment="CENTER" wrappingWidth="163.29811143875122">
+                                            <font>
+                                                <Font name="Apple Braille" size="16.0" />
+                                            </font>
+                                        </Text>
+                                        <Button fx:id="buttonPlusPassport" mnemonicParsing="false" onAction="#ButtonPlusPassport" text="+" />
+                                        <Button fx:id="buttonMinusPassport" mnemonicParsing="false" onAction="#ButtonMinusPassport" text="-" />
+                                    </children>
+                                </HBox>
                                 <HBox fx:id="HBoxPassport" prefHeight="34.0" prefWidth="0.0">
                                     <children>
                                         <Text fx:id="textDutyFree" strokeType="OUTSIDE" strokeWidth="0.0" text="Duty Free" textAlignment="CENTER" wrappingWidth="163.29811143875122">
@@ -189,88 +166,88 @@
                                         <Button fx:id="buttonMinusDutyFree" mnemonicParsing="false" onAction="#buttonMinusDuty" text="-" />
                                     </children>
                                 </HBox>
-                        <Label fx:id="labelServicePoints1" alignment="CENTER" minWidth="60.0" prefHeight="23.0" prefWidth="255.0" style="&#10;" text="GUIDE" textAlignment="CENTER" wrapText="false">
-                           <font>
-                              <Font size="18.0" fx:id="x111" />
-                           </font>
-                           <textFill>
-                              <Color red="0.624" green="0.624" blue="0.624" fx:id="x211" />
-                           </textFill>
-                        </Label>
-                        <Separator fx:id="seperator21" prefHeight="13.0" prefWidth="254.0" />
-                        <VBox prefHeight="200.0" prefWidth="100.0">
-                           <children>
-                              <HBox prefHeight="46.0" prefWidth="254.0">
-                                 <children>
-                                    <AnchorPane prefHeight="54.0" prefWidth="258.0">
-                                       <children>
-                                          <ImageView fitHeight="54.0" fitWidth="124.0" layoutX="34.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@checkinPerson.png" />
-                                             </image>
-                                          </ImageView>
-                                          <Text fx:id="textCheckin1" layoutX="84.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Duty Free" textAlignment="CENTER" wrappingWidth="163.29811143875122">
-                                             <font>
-                                                <Font name="Apple Braille" size="16.0" />
-                                             </font>
-                                          </Text>
-                                       </children>
-                                    </AnchorPane>
-                                 </children>
-                              </HBox>
-                              <HBox prefHeight="46.0" prefWidth="254.0">
-                                 <children>
-                                    <AnchorPane prefHeight="54.0" prefWidth="258.0">
-                                       <children>
-                                          <ImageView fitHeight="46.0" fitWidth="59.0" layoutX="15.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@airport/Asset29.png" />
-                                             </image>
-                                          </ImageView>
-                                          <Text fx:id="textCheckin11" layoutX="84.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Security control" textAlignment="CENTER" wrappingWidth="163.29811143875122">
-                                             <font>
-                                                <Font name="Apple Braille" size="16.0" />
-                                             </font>
-                                          </Text>
-                                       </children>
-                                    </AnchorPane>
-                                 </children>
-                              </HBox>
-                              <HBox prefHeight="46.0" prefWidth="254.0">
-                                 <children>
-                                    <AnchorPane prefHeight="54.0" prefWidth="258.0">
-                                       <children>
-                                          <ImageView fitHeight="46.0" fitWidth="59.0" layoutX="34.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@airport/Asset7.png" />
-                                             </image>
-                                          </ImageView>
-                                          <Text fx:id="textCheckin111" layoutX="84.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Passport control" textAlignment="CENTER" wrappingWidth="163.29811143875122">
-                                             <font>
-                                                <Font name="Apple Braille" size="16.0" />
-                                             </font>
-                                          </Text>
-                                       </children>
-                                    </AnchorPane>
-                                 </children>
-                              </HBox>
-                              <HBox prefHeight="46.0" prefWidth="254.0">
-                                 <children>
-                                    <AnchorPane prefHeight="54.0" prefWidth="258.0">
-                                       <children>
-                                          <Text fx:id="textCheckin1111" layoutX="84.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Passenger" textAlignment="CENTER" wrappingWidth="163.29811143875122">
-                                             <font>
-                                                <Font name="Apple Braille" size="16.0" />
-                                             </font>
-                                          </Text>
-                                          <Circle fill="#1fff46" layoutX="37.0" layoutY="24.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" />
-                                          <Circle fill="#ff2121" layoutX="65.0" layoutY="24.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" />
-                                       </children>
-                                    </AnchorPane>
-                                 </children>
-                              </HBox>
-                           </children>
-                        </VBox>
+                                <Label fx:id="labelServicePoints1" alignment="CENTER" minWidth="60.0" prefHeight="23.0" prefWidth="255.0" style="&#10;" text="GUIDE" textAlignment="CENTER" wrapText="false">
+                                    <font>
+                                        <Font size="18.0" fx:id="x111" />
+                                    </font>
+                                    <textFill>
+                                        <Color red="0.624" green="0.624" blue="0.624" fx:id="x211" />
+                                    </textFill>
+                                </Label>
+                                <Separator fx:id="seperator21" prefHeight="13.0" prefWidth="254.0" />
+                                <VBox prefHeight="200.0" prefWidth="100.0">
+                                    <children>
+                                        <HBox prefHeight="46.0" prefWidth="254.0">
+                                            <children>
+                                                <AnchorPane prefHeight="54.0" prefWidth="258.0">
+                                                    <children>
+                                                        <ImageView fitHeight="54.0" fitWidth="124.0" layoutX="34.0" pickOnBounds="true" preserveRatio="true">
+                                                            <image>
+                                                                <Image url="@checkinPerson.png" />
+                                                            </image>
+                                                        </ImageView>
+                                                        <Text fx:id="textCheckin1" layoutX="84.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Duty Free" textAlignment="CENTER" wrappingWidth="163.29811143875122">
+                                                            <font>
+                                                                <Font name="Apple Braille" size="16.0" />
+                                                            </font>
+                                                        </Text>
+                                                    </children>
+                                                </AnchorPane>
+                                            </children>
+                                        </HBox>
+                                        <HBox prefHeight="46.0" prefWidth="254.0">
+                                            <children>
+                                                <AnchorPane prefHeight="54.0" prefWidth="258.0">
+                                                    <children>
+                                                        <ImageView fitHeight="46.0" fitWidth="59.0" layoutX="15.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                                                            <image>
+                                                                <Image url="@airport/Asset29.png" />
+                                                            </image>
+                                                        </ImageView>
+                                                        <Text fx:id="textCheckin11" layoutX="84.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Security control" textAlignment="CENTER" wrappingWidth="163.29811143875122">
+                                                            <font>
+                                                                <Font name="Apple Braille" size="16.0" />
+                                                            </font>
+                                                        </Text>
+                                                    </children>
+                                                </AnchorPane>
+                                            </children>
+                                        </HBox>
+                                        <HBox prefHeight="46.0" prefWidth="254.0">
+                                            <children>
+                                                <AnchorPane prefHeight="54.0" prefWidth="258.0">
+                                                    <children>
+                                                        <ImageView fitHeight="46.0" fitWidth="59.0" layoutX="34.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                                                            <image>
+                                                                <Image url="@airport/Asset7.png" />
+                                                            </image>
+                                                        </ImageView>
+                                                        <Text fx:id="textCheckin111" layoutX="84.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Passport control" textAlignment="CENTER" wrappingWidth="163.29811143875122">
+                                                            <font>
+                                                                <Font name="Apple Braille" size="16.0" />
+                                                            </font>
+                                                        </Text>
+                                                    </children>
+                                                </AnchorPane>
+                                            </children>
+                                        </HBox>
+                                        <HBox prefHeight="46.0" prefWidth="254.0">
+                                            <children>
+                                                <AnchorPane prefHeight="54.0" prefWidth="258.0">
+                                                    <children>
+                                                        <Text fx:id="textCheckin1111" layoutX="84.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Passenger" textAlignment="CENTER" wrappingWidth="163.29811143875122">
+                                                            <font>
+                                                                <Font name="Apple Braille" size="16.0" />
+                                                            </font>
+                                                        </Text>
+                                                        <Circle fill="#1fff46" layoutX="37.0" layoutY="24.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" />
+                                                        <Circle fill="#ff2121" layoutX="65.0" layoutY="24.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" />
+                                                    </children>
+                                                </AnchorPane>
+                                            </children>
+                                        </HBox>
+                                    </children>
+                                </VBox>
                             </children>
                         </VBox>
                     </children>
@@ -278,128 +255,128 @@
                 <ScrollPane fx:id="ScrollPane" prefHeight="-1.0" prefWidth="-1.0">
                     <content>
                         <StackPane fx:id="stackPane" prefHeight="545.0" prefWidth="641.0">
-                     <children>
-                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
-                           <children>
-                              <ImageView fx:id="counter30" fitHeight="34.0" fitWidth="12.0" layoutX="365.0" layoutY="447.0">
-                                 <image>
-                                    <Image url="@airport/Asset7.png" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fitHeight="544.0" fitWidth="624.0" layoutX="5.0" layoutY="5.0">
-                                 <image>
-                                    <Image url="@MainGUI.png" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fx:id="security1" fitHeight="41.0" fitWidth="67.0" layoutX="271.0" layoutY="369.0">
-                                 <image>
-                                    <Image url="@airport/Asset29.png" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fx:id="security3" fitHeight="41.0" fitWidth="67.0" layoutX="274.0" layoutY="402.0">
-                                 <image>
-                                    <Image url="@airport/Asset29.png" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fx:id="security2" fitHeight="41.0" fitWidth="67.0" layoutX="212.0" layoutY="397.0">
-                                 <image>
-                                    <Image url="@airport/Asset29.png" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fx:id="control5" fitHeight="56.0" fitWidth="40.0" layoutX="234.0" layoutY="316.0">
-                                 <image>
-                                    <Image url="@airport/Asset7.png" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fx:id="counter2" fitHeight="45.0" fitWidth="30.0" layoutX="316.0" layoutY="457.0">
-                                 <image>
-                                    <Image url="@checkinPerson.png" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fx:id="counter3" fitHeight="45.0" fitWidth="32.0" layoutX="296.0" layoutY="466.0">
-                                 <image>
-                                    <Image url="@checkinPerson.png" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fx:id="counter1" fitHeight="45.0" fitWidth="30.0" layoutX="364.0" layoutY="441.0">
-                                 <image>
-                                    <Image url="@checkinPerson.png" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fx:id="counter4" fitHeight="45.0" fitWidth="32.0" layoutX="274.0" layoutY="477.0">
-                                 <image>
-                                    <Image url="@checkinPerson.png" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fx:id="control4" fitHeight="56.0" fitWidth="40.0" layoutX="203.0" layoutY="331.0">
-                                 <image>
-                                    <Image url="@airport/Asset8.png" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fitHeight="217.0" fitWidth="327.0" layoutX="277.0" layoutY="313.0">
-                                 <image>
-                                    <Image url="@airport/Asset35.png" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fx:id="control3" fitHeight="56.0" fitWidth="41.0" layoutX="171.0" layoutY="347.0">
-                                 <image>
-                                    <Image url="@airport/Asset7.png" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fx:id="control2" fitHeight="55.0" fitWidth="43.0" layoutX="137.0" layoutY="362.0">
-                                 <image>
-                                    <Image url="@airport/Asset8.png" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fx:id="control1" fitHeight="59.0" fitWidth="45.0" layoutX="101.0" layoutY="377.0">
-                                 <image>
-                                    <Image url="@airport/Asset7.png" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fx:id="security4" fitHeight="41.0" fitWidth="67.0" layoutX="217.0" layoutY="429.0">
-                                 <image>
-                                    <Image url="@airport/Asset29.png" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fx:id="security5" fitHeight="41.0" fitWidth="67.0" layoutX="156.0" layoutY="430.0">
-                                 <image>
-                                    <Image url="@airport/Asset29.png" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fitHeight="103.0" fitWidth="91.0" layoutX="408.0" layoutY="105.0">
-                                 <image>
-                                    <Image url="@dutyfree2.png" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fitHeight="103.0" fitWidth="91.0" layoutX="446.0" layoutY="126.0">
-                                 <image>
-                                    <Image url="@dutyfree2.png" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fitHeight="103.0" fitWidth="91.0" layoutX="485.0" layoutY="147.0">
-                                 <image>
-                                    <Image url="@dutyfree2.png" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fitHeight="74.0" fitWidth="74.0" layoutX="408.0" layoutY="202.0">
-                                 <image>
-                                    <Image url="@dutyfree1.png" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fx:id="cashier1" fitHeight="65.0" fitWidth="84.0" layoutX="300.0" layoutY="209.0">
-                                 <image>
-                                    <Image url="@DutyFree.png" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fitHeight="74.0" fitWidth="74.0" layoutX="360.0" layoutY="177.0">
-                                 <image>
-                                    <Image url="@dutyfree1.png" />
-                                 </image>
-                              </ImageView>
-                              <Canvas fx:id="canvasy" height="545.0" width="633.0" />
-                           </children>
-                        </AnchorPane>
-                     </children>
+                            <children>
+                                <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                    <children>
+                                        <ImageView fx:id="counter30" fitHeight="34.0" fitWidth="12.0" layoutX="365.0" layoutY="447.0">
+                                            <image>
+                                                <Image url="@airport/Asset7.png" />
+                                            </image>
+                                        </ImageView>
+                                        <ImageView fitHeight="544.0" fitWidth="624.0" layoutX="5.0" layoutY="5.0">
+                                            <image>
+                                                <Image url="@MainGUI.png" />
+                                            </image>
+                                        </ImageView>
+                                        <ImageView fx:id="security1" fitHeight="41.0" fitWidth="67.0" layoutX="271.0" layoutY="369.0">
+                                            <image>
+                                                <Image url="@airport/Asset29.png" />
+                                            </image>
+                                        </ImageView>
+                                        <ImageView fx:id="security3" fitHeight="41.0" fitWidth="67.0" layoutX="274.0" layoutY="402.0">
+                                            <image>
+                                                <Image url="@airport/Asset29.png" />
+                                            </image>
+                                        </ImageView>
+                                        <ImageView fx:id="security2" fitHeight="41.0" fitWidth="67.0" layoutX="212.0" layoutY="397.0">
+                                            <image>
+                                                <Image url="@airport/Asset29.png" />
+                                            </image>
+                                        </ImageView>
+                                        <ImageView fx:id="control5" fitHeight="56.0" fitWidth="40.0" layoutX="234.0" layoutY="316.0">
+                                            <image>
+                                                <Image url="@airport/Asset7.png" />
+                                            </image>
+                                        </ImageView>
+                                        <ImageView fx:id="counter2" fitHeight="45.0" fitWidth="30.0" layoutX="316.0" layoutY="457.0">
+                                            <image>
+                                                <Image url="@checkinPerson.png" />
+                                            </image>
+                                        </ImageView>
+                                        <ImageView fx:id="counter3" fitHeight="45.0" fitWidth="32.0" layoutX="296.0" layoutY="466.0">
+                                            <image>
+                                                <Image url="@checkinPerson.png" />
+                                            </image>
+                                        </ImageView>
+                                        <ImageView fx:id="counter1" fitHeight="45.0" fitWidth="30.0" layoutX="364.0" layoutY="441.0">
+                                            <image>
+                                                <Image url="@checkinPerson.png" />
+                                            </image>
+                                        </ImageView>
+                                        <ImageView fx:id="counter4" fitHeight="45.0" fitWidth="32.0" layoutX="274.0" layoutY="477.0">
+                                            <image>
+                                                <Image url="@checkinPerson.png" />
+                                            </image>
+                                        </ImageView>
+                                        <ImageView fx:id="control4" fitHeight="56.0" fitWidth="40.0" layoutX="203.0" layoutY="331.0">
+                                            <image>
+                                                <Image url="@airport/Asset8.png" />
+                                            </image>
+                                        </ImageView>
+                                        <ImageView fitHeight="217.0" fitWidth="327.0" layoutX="277.0" layoutY="313.0">
+                                            <image>
+                                                <Image url="@airport/Asset35.png" />
+                                            </image>
+                                        </ImageView>
+                                        <ImageView fx:id="control3" fitHeight="56.0" fitWidth="41.0" layoutX="171.0" layoutY="347.0">
+                                            <image>
+                                                <Image url="@airport/Asset7.png" />
+                                            </image>
+                                        </ImageView>
+                                        <ImageView fx:id="control2" fitHeight="55.0" fitWidth="43.0" layoutX="137.0" layoutY="362.0">
+                                            <image>
+                                                <Image url="@airport/Asset8.png" />
+                                            </image>
+                                        </ImageView>
+                                        <ImageView fx:id="control1" fitHeight="59.0" fitWidth="45.0" layoutX="101.0" layoutY="377.0">
+                                            <image>
+                                                <Image url="@airport/Asset7.png" />
+                                            </image>
+                                        </ImageView>
+                                        <ImageView fx:id="security4" fitHeight="41.0" fitWidth="67.0" layoutX="217.0" layoutY="429.0">
+                                            <image>
+                                                <Image url="@airport/Asset29.png" />
+                                            </image>
+                                        </ImageView>
+                                        <ImageView fx:id="security5" fitHeight="41.0" fitWidth="67.0" layoutX="156.0" layoutY="430.0">
+                                            <image>
+                                                <Image url="@airport/Asset29.png" />
+                                            </image>
+                                        </ImageView>
+                                        <ImageView fitHeight="103.0" fitWidth="91.0" layoutX="408.0" layoutY="105.0">
+                                            <image>
+                                                <Image url="@dutyfree2.png" />
+                                            </image>
+                                        </ImageView>
+                                        <ImageView fitHeight="103.0" fitWidth="91.0" layoutX="446.0" layoutY="126.0">
+                                            <image>
+                                                <Image url="@dutyfree2.png" />
+                                            </image>
+                                        </ImageView>
+                                        <ImageView fitHeight="103.0" fitWidth="91.0" layoutX="485.0" layoutY="147.0">
+                                            <image>
+                                                <Image url="@dutyfree2.png" />
+                                            </image>
+                                        </ImageView>
+                                        <ImageView fitHeight="74.0" fitWidth="74.0" layoutX="408.0" layoutY="202.0">
+                                            <image>
+                                                <Image url="@dutyfree1.png" />
+                                            </image>
+                                        </ImageView>
+                                        <ImageView fx:id="cashier1" fitHeight="65.0" fitWidth="84.0" layoutX="300.0" layoutY="209.0">
+                                            <image>
+                                                <Image url="@DutyFree.png" />
+                                            </image>
+                                        </ImageView>
+                                        <ImageView fitHeight="74.0" fitWidth="74.0" layoutX="360.0" layoutY="177.0">
+                                            <image>
+                                                <Image url="@dutyfree1.png" />
+                                            </image>
+                                        </ImageView>
+                                        <Canvas fx:id="canvasy" height="545.0" width="633.0" />
+                                    </children>
+                                </AnchorPane>
+                            </children>
                         </StackPane>
                     </content>
                 </ScrollPane>

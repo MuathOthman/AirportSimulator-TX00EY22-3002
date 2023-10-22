@@ -7,6 +7,8 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
@@ -117,6 +119,9 @@ public class Kontrolleri implements IKontrolleriForM, IKontrolleriForV {
     ImageView control5;
     @FXML
     MenuItem startButton;
+
+    @FXML
+    MenuItem results;
     @FXML
     Canvas canvasy;
 
@@ -377,6 +382,21 @@ public class Kontrolleri implements IKontrolleriForM, IKontrolleriForV {
         return ((OmaMoottori) moottori).getPalvelupisteet();
     }
 
+    @FXML
+    private void results(ActionEvent event){
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/results.fxml"));
+            Parent root1 = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Results");
+            stage.setScene(new javafx.scene.Scene(root1));
+            stage.show();
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
 
     @Override
     public void naytaLoppuaika(double aika) {
@@ -397,6 +417,7 @@ public class Kontrolleri implements IKontrolleriForM, IKontrolleriForV {
     public void kaynnistaSimulointi() {
 
     }
+
 
     @Override
     public void nopeuta() {

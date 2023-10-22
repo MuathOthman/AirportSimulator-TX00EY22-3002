@@ -33,25 +33,24 @@
 -->
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.canvas.Canvas?>
-<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.KontrolleriResults">
+<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.KontrolleriResul">
     <children>
         <MenuBar fx:id="MenuBar" VBox.vgrow="NEVER">
             <menus>
@@ -98,7 +97,7 @@
                                 </Label>
                         <AnchorPane prefHeight="473.0" prefWidth="254.0">
                            <children>
-                              <ChoiceBox fx:id="selection" layoutX="24.0" layoutY="2.0" prefHeight="26.0" prefWidth="213.0" />
+                              <ComboBox fx:id="selection" layoutX="24.0" layoutY="2.0" onAction="#selector" prefHeight="26.0" prefWidth="213.0" />
                               <VBox layoutY="50.0" prefHeight="361.0" prefWidth="267.0">
                                  <children>
                                     <HBox prefHeight="43.0" prefWidth="264.0">
@@ -108,7 +107,7 @@
                                                 <Insets left="20.0" />
                                              </HBox.margin>
                                           </Label>
-                                          <Label fx:id="dataFlights" prefHeight="36.0" prefWidth="111.0" text="DATA" />
+                                          <Label fx:id="dataFlights" prefHeight="36.0" prefWidth="111.0" text="-" />
                                        </children>
                                     </HBox>
                                     <HBox prefHeight="43.0" prefWidth="264.0">
@@ -128,7 +127,7 @@
                                                 <Insets left="20.0" />
                                              </HBox.margin>
                                           </Label>
-                                          <Label fx:id="dataMissed" prefHeight="36.0" prefWidth="116.0" text="DATA" />
+                                          <Label fx:id="dataMissed" prefHeight="36.0" prefWidth="116.0" text="-" />
                                        </children>
                                     </HBox>
                                     <HBox prefHeight="43.0" prefWidth="264.0">
@@ -139,6 +138,16 @@
                                              </HBox.margin>
                                           </Label>
                                           <Label fx:id="dataSimulationTime" prefHeight="36.0" prefWidth="116.0" text="DATA" />
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="43.0" prefWidth="264.0">
+                                       <children>
+                                          <Label prefHeight="36.0" prefWidth="141.0" text="Average simulation time: ">
+                                             <HBox.margin>
+                                                <Insets left="20.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <Label fx:id="AvaregeSimulationTime" prefHeight="36.0" prefWidth="92.0" text="DATA" />
                                        </children>
                                     </HBox>
                                  </children>
@@ -155,16 +164,137 @@
                      <children>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0">
                            <children>
-                              <Canvas height="548.0" width="636.0" />
-                              <TableView layoutX="14.0" layoutY="44.0" prefHeight="177.0" prefWidth="599.0">
-                                <columns>
-                                  <TableColumn prefWidth="120.0" text="Palvelupisteet" />
-                                  <TableColumn prefWidth="120.0" text="Service time" />
-                                    <TableColumn prefWidth="131.0" text="Lenght of queue" />
-                                    <TableColumn minWidth="9.0" prefWidth="108.0" text="Utilization" />
-                                    <TableColumn prefWidth="118.0" text="Throughput" />
-                                </columns>
-                              </TableView>
+                              <HBox layoutX="34.0" layoutY="45.0" prefHeight="246.0" prefWidth="578.0">
+                                 <children>
+                                    <VBox prefHeight="246.0" prefWidth="130.0">
+                                       <children>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Palvelupisteet" textAlignment="CENTER" wrappingWidth="125.21630859375">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </Text>
+                                          <Separator prefWidth="200.0" />
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Check-in" textAlignment="CENTER" wrappingWidth="129.27880859375">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets bottom="10.0" top="20.0" />
+                                             </VBox.margin>
+                                          </Text>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Security Check" textAlignment="CENTER" wrappingWidth="129.27880859375">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets bottom="10.0" />
+                                             </VBox.margin>
+                                          </Text>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Passport Control" textAlignment="CENTER" wrappingWidth="129.27880859375">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets bottom="10.0" />
+                                             </VBox.margin>
+                                          </Text>
+                                       </children>
+                                    </VBox>
+                                    <VBox prefHeight="246.0" prefWidth="130.0">
+                                       <children>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Quantity" textAlignment="CENTER" wrappingWidth="125.21630859375">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </Text>
+                                          <Separator prefWidth="200.0" />
+                                          <Text fx:id="Q1" strokeType="OUTSIDE" strokeWidth="0.0" text="DATA" textAlignment="CENTER" wrappingWidth="128.94189453125">
+                                             <VBox.margin>
+                                                <Insets bottom="10.0" top="20.0" />
+                                             </VBox.margin>
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Text>
+                                          <Text fx:id="Q2" strokeType="OUTSIDE" strokeWidth="0.0" text="DATA" textAlignment="CENTER" wrappingWidth="128.94189453125">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets bottom="10.0" />
+                                             </VBox.margin>
+                                          </Text>
+                                          <Text fx:id="Q3" strokeType="OUTSIDE" strokeWidth="0.0" text="DATA" textAlignment="CENTER" wrappingWidth="128.94189453125">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Text>
+                                       </children>
+                                    </VBox>
+                                    <VBox prefHeight="246.0" prefWidth="130.0">
+                                       <children>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Utilization" textAlignment="CENTER" wrappingWidth="125.21630859375">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </Text>
+                                          <Separator prefWidth="200.0" />
+                                          <Text fx:id="U1" strokeType="OUTSIDE" strokeWidth="0.0" text="DATA" textAlignment="CENTER" wrappingWidth="128.94189453125">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets bottom="10.0" top="20.0" />
+                                             </VBox.margin>
+                                          </Text>
+                                          <Text fx:id="U2" strokeType="OUTSIDE" strokeWidth="0.0" text="DATA" textAlignment="CENTER" wrappingWidth="128.94189453125">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets bottom="10.0" />
+                                             </VBox.margin>
+                                          </Text>
+                                          <Text fx:id="U3" strokeType="OUTSIDE" strokeWidth="0.0" text="DATA" textAlignment="CENTER" wrappingWidth="128.94189453125">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Text>
+                                       </children>
+                                    </VBox>
+                                    <VBox prefHeight="246.0" prefWidth="130.0">
+                                       <children>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Throughput" textAlignment="CENTER" wrappingWidth="125.21630859375">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </Text>
+                                          <Separator prefWidth="200.0" />
+                                          <Text fx:id="T1" strokeType="OUTSIDE" strokeWidth="0.0" text="DATA" textAlignment="CENTER" wrappingWidth="128.94189453125">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets bottom="10.0" top="20.0" />
+                                             </VBox.margin>
+                                          </Text>
+                                          <Text fx:id="T2" strokeType="OUTSIDE" strokeWidth="0.0" text="DATA" textAlignment="CENTER" wrappingWidth="128.94189453125">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets bottom="10.0" />
+                                             </VBox.margin>
+                                          </Text>
+                                          <Text fx:id="T3" strokeType="OUTSIDE" strokeWidth="0.0" text="DATA" textAlignment="CENTER" wrappingWidth="128.94189453125">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Text>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
                            </children>
                         </AnchorPane>
                      </children>

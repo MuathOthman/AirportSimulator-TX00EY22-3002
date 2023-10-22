@@ -31,8 +31,7 @@ public class Asiakas {
 		id = i++;
 		saapumisaika = Kello.getInstance().getAika();
 		Trace.out(Trace.Level.INFO, "Uusi asiakas:" + id + ":" + saapumisaika);
-		Random r = new Random();
-		international = r.nextBoolean();
+		international = true;
 	}
 
 	public boolean isPassport() {
@@ -67,13 +66,14 @@ public class Asiakas {
 		this.saapumisaika = saapumisaika;
 	}
 
-	public void raportti() {
+	public double raportti() {
 		Trace.out(Trace.Level.INFO, "Asiakas " + id + " saapui:" + saapumisaika);
 		Trace.out(Trace.Level.INFO, "Asiakas " + id + " poistui:" + poistumisaika);
 		Trace.out(Trace.Level.INFO, "Asiakas " + id + " viipyi:" + (poistumisaika - saapumisaika));
 		sum += (poistumisaika - saapumisaika);
 		double keskiarvo = sum / id;
 		System.out.println("Asiakkaiden läpimenoaikojen keskiarvo " + keskiarvo);
+		return keskiarvo;
 	}
 
 	public void draw(GraphicsContext gc, int x, int y) {
@@ -84,8 +84,6 @@ public class Asiakas {
 		}
 		gc.fillOval(x, y, 10, 10);
 
-		gc.setFill(Color.BLACK);
-		gc.fillText(String.valueOf(id), x + 2, y + 6);
 
 	}
 

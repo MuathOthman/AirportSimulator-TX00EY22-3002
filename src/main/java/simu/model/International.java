@@ -10,6 +10,6 @@ public class International extends CheckIN {
 
     @Override
     public void aloitaPalvelu() {
-
+        super.aloitaPalvelu();
     }
 }

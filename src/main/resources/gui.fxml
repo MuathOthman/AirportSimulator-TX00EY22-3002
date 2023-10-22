@@ -43,8 +43,6 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -54,6 +52,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -190,11 +189,88 @@
                                         <Button fx:id="buttonMinusDutyFree" mnemonicParsing="false" onAction="#buttonMinusDuty" text="-" />
                                     </children>
                                 </HBox>
-                                <TableView fx:id="tableService" prefHeight="253.0" prefWidth="254.0">
-                           <columns>
-                              <TableColumn prefWidth="125.0" text="SERVICE POINTS" />
-                              <TableColumn prefWidth="128.0" text="QUANTITY" />
-                           </columns></TableView>
+                        <Label fx:id="labelServicePoints1" alignment="CENTER" minWidth="60.0" prefHeight="23.0" prefWidth="255.0" style="&#10;" text="GUIDE" textAlignment="CENTER" wrapText="false">
+                           <font>
+                              <Font size="18.0" fx:id="x111" />
+                           </font>
+                           <textFill>
+                              <Color red="0.624" green="0.624" blue="0.624" fx:id="x211" />
+                           </textFill>
+                        </Label>
+                        <Separator fx:id="seperator21" prefHeight="13.0" prefWidth="254.0" />
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <HBox prefHeight="46.0" prefWidth="254.0">
+                                 <children>
+                                    <AnchorPane prefHeight="54.0" prefWidth="258.0">
+                                       <children>
+                                          <ImageView fitHeight="54.0" fitWidth="124.0" layoutX="34.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@checkinPerson.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Text fx:id="textCheckin1" layoutX="84.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Duty Free" textAlignment="CENTER" wrappingWidth="163.29811143875122">
+                                             <font>
+                                                <Font name="Apple Braille" size="16.0" />
+                                             </font>
+                                          </Text>
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="46.0" prefWidth="254.0">
+                                 <children>
+                                    <AnchorPane prefHeight="54.0" prefWidth="258.0">
+                                       <children>
+                                          <ImageView fitHeight="46.0" fitWidth="59.0" layoutX="15.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@airport/Asset29.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Text fx:id="textCheckin11" layoutX="84.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Security control" textAlignment="CENTER" wrappingWidth="163.29811143875122">
+                                             <font>
+                                                <Font name="Apple Braille" size="16.0" />
+                                             </font>
+                                          </Text>
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="46.0" prefWidth="254.0">
+                                 <children>
+                                    <AnchorPane prefHeight="54.0" prefWidth="258.0">
+                                       <children>
+                                          <ImageView fitHeight="46.0" fitWidth="59.0" layoutX="34.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@airport/Asset7.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Text fx:id="textCheckin111" layoutX="84.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Passport control" textAlignment="CENTER" wrappingWidth="163.29811143875122">
+                                             <font>
+                                                <Font name="Apple Braille" size="16.0" />
+                                             </font>
+                                          </Text>
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="46.0" prefWidth="254.0">
+                                 <children>
+                                    <AnchorPane prefHeight="54.0" prefWidth="258.0">
+                                       <children>
+                                          <Text fx:id="textCheckin1111" layoutX="84.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Passenger" textAlignment="CENTER" wrappingWidth="163.29811143875122">
+                                             <font>
+                                                <Font name="Apple Braille" size="16.0" />
+                                             </font>
+                                          </Text>
+                                          <Circle fill="#1fff46" layoutX="37.0" layoutY="24.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Circle fill="#ff2121" layoutX="65.0" layoutY="24.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" />
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
                             </children>
                         </VBox>
                     </children>

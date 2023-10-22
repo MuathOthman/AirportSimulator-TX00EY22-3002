@@ -3,6 +3,7 @@ package simu.model;
 import controller.IKontrolleriForM;
 import eduni.distributions.Negexp;
 import eduni.distributions.Normal;
+import entity.SimuE;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import simu.model.Domestic;
@@ -17,11 +18,18 @@ import simu.model.PassportControl;
 import simu.model.SecurityCheck;
 import dao.*;
 import datasource.*;
+import entity.*;
 
 
 public class OmaMoottori extends Moottori{
 
 	private Saapumisprosessi saapumisprosessi;
+
+	private SimuDao SimuDao;
+
+	private SimuE SimuE;
+
+	private AsiakasDao AsiakasDao;
 
 	private Palvelupiste[] palvelupisteet;
 
@@ -75,12 +83,17 @@ public class OmaMoottori extends Moottori{
 	@Override
 	protected void alustukset() {
 		saapumisprosessi.generoiSeuraava(); // Ensimmäinen saapuminen järjestelmään
+		SimuDao = new SimuDao();
+		SimuE = new SimuE(settings, "22102023");
+		SimuDao.persist(SimuE);
+		AsiakasDao = new AsiakasDao();
 	}
 
 	@Override
 	protected void suoritaTapahtuma(Tapahtuma t) {  // B-vaiheen tapahtumat
 
 		Asiakas a;
+		AsiakasE e;
 		boolean jonocheck;
 		int j;
 		switch ((TapahtumanTyyppi) t.getTyyppi()) {
@@ -197,7 +210,6 @@ public class OmaMoottori extends Moottori{
 						for (int i = 10; i <(10 + settings[2]); i++) {
 							if (palvelupisteet[i].GetJonoSize() == j) {
 								palvelupisteet[i].lisaaJonoon(a);
-								System.out.println("Asiakas lisätty passcheck nro" + i);
 								jonocheck = false;
 								break;
 							}
@@ -218,7 +230,6 @@ public class OmaMoottori extends Moottori{
 						for (int i = 10; i <(10 + settings[2]); i++) {
 							if (palvelupisteet[i].GetJonoSize() == j) {
 								palvelupisteet[i].lisaaJonoon(a);
-								System.out.println("Asiakas lisätty passcheck nro" + i);
 								jonocheck = false;
 								break;
 							}
@@ -238,7 +249,6 @@ public class OmaMoottori extends Moottori{
 						for (int i = 10; i <(10 + settings[2]); i++) {
 							if (palvelupisteet[i].GetJonoSize() == j) {
 								palvelupisteet[i].lisaaJonoon(a);
-								System.out.println("Asiakas lisätty passcheck nro" + i);
 								jonocheck = false;
 								break;
 							}
@@ -259,7 +269,6 @@ public class OmaMoottori extends Moottori{
 						for (int i = 10; i <(10 + settings[2]); i++) {
 							if (palvelupisteet[i].GetJonoSize() == j) {
 								palvelupisteet[i].lisaaJonoon(a);
-								System.out.println("Asiakas lisätty passcheck nro" + i);
 								jonocheck = false;
 								break;
 							}
@@ -279,7 +288,6 @@ public class OmaMoottori extends Moottori{
 						for (int i = 10; i <(10 + settings[2]); i++) {
 							if (palvelupisteet[i].GetJonoSize() == j) {
 								palvelupisteet[i].lisaaJonoon(a);
-								System.out.println("Asiakas lisätty passcheck nro" + i);
 								jonocheck = false;
 								break;
 							}
@@ -311,18 +319,21 @@ public class OmaMoottori extends Moottori{
 				break;
 			case DUT1:
 				a = (Asiakas) palvelupisteet[15].otaJonosta();
-				System.out.println(a.getId() + " TAXFREE BABY!");
 				palvelupisteet[16].lisaaJonoon(a);
 				break;
 			case DEP1:
-				System.out.println("poisto");
 				a = (Asiakas) palvelupisteet[17].otaJonosta(); //asiakas poistetaan järjestelmästä
 				a.setPoistumisaika(Kello.getInstance().getAika());
+				e = new AsiakasE(a, this.SimuE.getId());
+				AsiakasDao.persist(e);
 				a.raportti();
 			case DEP2:
-				System.out.println("poisto");
 				a = (Asiakas) palvelupisteet[16].otaJonosta(); //asiakas poistetaan järjestelmästä
 				a.setPoistumisaika(Kello.getInstance().getAika());
+				e = new AsiakasE(a, this.SimuE.getId());
+				AsiakasDao.persist(e);
+				SimuE.setAv_time(a.raportti());
+				SimuDao.update(SimuE);
 				a.raportti();
 
 		}

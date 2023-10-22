@@ -16,7 +16,7 @@ public class AsiakasE {
     private int id;
     @Column(name = "arr_time")
     private double arr_time;
-    @Column(name = "arr_time")
+    @Column(name = "left_time")
     private double left_time;
 
 
